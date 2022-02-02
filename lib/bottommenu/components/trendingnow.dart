@@ -24,7 +24,7 @@ class TrendingNow extends StatelessWidget {
                 image: DecorationImage(image: NetworkImage(infoo.image))),
           ),
           Text(
-            infoo.title,
+            infoo.judulbuku,
             style: TextStyle(fontSize: 15, color: Colors.black),
           )
         ],

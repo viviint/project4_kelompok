@@ -56,7 +56,7 @@ class _ReleaSeState extends State<ReleaSe> {
                             ),
                             Center(
                               child: Text(
-                                booksModel.title,
+                                booksModel.judulbuku,
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,

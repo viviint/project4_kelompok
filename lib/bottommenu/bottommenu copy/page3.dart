@@ -48,7 +48,7 @@ class _LibraryState extends State<Library> {
                   itemBuilder: (context, index) {
                     BooksModel booksModel = BooksModel.booksmodel[index];
                     return GestureDetector(
-                      onTap: () => Get.to(Detail(idBook: booksModel.id)),
+                      onTap: () => Get.to(Detail(idBook: booksModel.id_book)),
                       child: Card(
                         margin: EdgeInsets.symmetric(vertical: 10),
                         shadowColor: Colors.transparent,
@@ -56,8 +56,8 @@ class _LibraryState extends State<Library> {
                           leading: Image.network(
                             booksModel.image,
                           ),
-                          title: Text(booksModel.title),
-                          subtitle: Text(booksModel.subtitle),
+                          title: Text(booksModel.judulbuku),
+                          subtitle: Text(booksModel.pengarang),
                         ),
                       ),
                     );

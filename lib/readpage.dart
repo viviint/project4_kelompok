@@ -19,7 +19,7 @@ class _ReaDState extends State<ReaD> {
         toolbarHeight: 90,
         centerTitle: true,
         title: Text(
-          "${widget.detail.title}",
+          "${widget.detail.judulbuku}",
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
@@ -30,14 +30,14 @@ class _ReaDState extends State<ReaD> {
               color: Colors.black,
             ),
             onTap: () {
-              Get.to(Detail(idBook: widget.detail.id));
+              Get.to(Detail(idBook: widget.detail.id_book));
             }),
       ),
       body: Padding(
         padding: const EdgeInsets.all(25),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: [Text(widget.detail.story)],
+          children: [Text(widget.detail.isibuku)],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(

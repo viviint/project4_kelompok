@@ -15,13 +15,14 @@ class Detail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var selectedData = BooksModel.booksmodel.firstWhere((e) => e.id == idBook);
+    var selectedData =
+        BooksModel.booksmodel.firstWhere((e) => e.id_book == idBook);
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 90,
         centerTitle: true,
         title: Text(
-          "${selectedData.title}",
+          "${selectedData.judulbuku}",
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
@@ -49,7 +50,7 @@ class Detail extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             child: Center(
               child: Text(
-                "${selectedData.title}",
+                "${selectedData.judulbuku}",
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
               ),
             ),
@@ -58,7 +59,7 @@ class Detail extends StatelessWidget {
             padding: const EdgeInsets.only(left: 25),
             child: Row(children: [
               Text(
-                "${selectedData.subtitle}",
+                "${selectedData.pengarang}",
               ),
             ]),
           ),
@@ -150,7 +151,7 @@ class Detail extends StatelessWidget {
             padding: const EdgeInsets.only(left: 25, right: 25),
             child: Column(
               children: [
-                Text(selectedData.summary),
+                Text(selectedData.deskripsi),
               ],
             ),
           ),

@@ -12,43 +12,43 @@ String booksmodelToJson(List<BooksModel> data) =>
 
 @JsonSerializable()
 class BooksModel {
-  int id;
+  int id_book;
   String image;
-  String title;
-  String subtitle;
-  String summary;
-  String story;
+  String judulbuku;
+  String pengarang;
+  String deskripsi;
+  String isibuku;
   List<String> genre;
   double rating;
 
   BooksModel({
-    required this.id,
+    required this.id_book,
     required this.image,
-    required this.title,
-    required this.subtitle,
-    required this.summary,
-    required this.story,
+    required this.judulbuku,
+    required this.pengarang,
+    required this.deskripsi,
+    required this.isibuku,
     required this.genre,
     required this.rating,
   });
 
   BooksModel copyWith({
-    int? id,
+    int? id_book,
     String? image,
-    String? title,
-    String? subtitle,
-    String? summary,
-    String? story,
+    String? judulbuku,
+    String? pengarang,
+    String? deskripsi,
+    String? isibuku,
     List<String>? genre,
     double? rating,
   }) {
     return BooksModel(
-      id: id ?? this.id,
+      id_book: id_book ?? this.id_book,
       image: image ?? this.image,
-      title: title ?? this.title,
-      subtitle: subtitle ?? this.subtitle,
-      summary: summary ?? this.summary,
-      story: story ?? this.story,
+      judulbuku: judulbuku ?? this.judulbuku,
+      pengarang: pengarang ?? this.pengarang,
+      deskripsi: deskripsi ?? this.deskripsi,
+      isibuku: isibuku ?? this.isibuku,
       genre: genre ?? this.genre,
       rating: rating ?? this.rating,
     );
@@ -56,12 +56,12 @@ class BooksModel {
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      'id_book': id_book,
       'image': image,
-      'title': title,
-      'subtitle': subtitle,
-      'summary': summary,
-      'story': story,
+      'judulbuku': judulbuku,
+      'pengarang': pengarang,
+      'deskripsi': deskripsi,
+      'isibuku': isibuku,
       'genre': genre,
       'rating': rating,
     };
@@ -69,12 +69,12 @@ class BooksModel {
 
   factory BooksModel.fromMap(Map<String, dynamic> map) {
     return BooksModel(
-      id: map['id'] ?? '',
+      id_book: map['id_book'] ?? '',
       image: map['image'] ?? '',
-      title: map['title'] ?? '',
-      subtitle: map['subtitle'] ?? '',
-      summary: map['summary'] ?? '',
-      story: map['story'] ?? '',
+      judulbuku: map['judulbuku'] ?? '',
+      pengarang: map['pengarang'] ?? '',
+      deskripsi: map['deskripsi'] ?? '',
+      isibuku: map['isibuku'] ?? '',
       genre: List<String>.from(map['genre']),
       rating: map['rating']?.toDouble() ?? 0.0,
     );
@@ -87,7 +87,7 @@ class BooksModel {
 
   @override
   String toString() {
-    return 'BooksModel(id: $id,image: $image, title: $title, subtitle: $subtitle, summary: $summary, story: $story, genre: $genre, rating: $rating)';
+    return 'BooksModel(id_book: $id_book,image: $image, judulbuku: $judulbuku, pengarang: $pengarang, deskripsi: $deskripsi, isibuku: $isibuku, genre: $genre, rating: $rating)';
   }
 
   @override
@@ -95,12 +95,12 @@ class BooksModel {
     if (identical(this, other)) return true;
 
     return other is BooksModel &&
-        other.id == id &&
+        other.id_book == id_book &&
         other.image == image &&
-        other.title == title &&
-        other.subtitle == subtitle &&
-        other.summary == summary &&
-        other.story == story &&
+        other.judulbuku == judulbuku &&
+        other.pengarang == pengarang &&
+        other.deskripsi == deskripsi &&
+        other.isibuku == isibuku &&
         listEquals(other.genre, genre) &&
         other.rating == rating;
   }
@@ -108,51 +108,51 @@ class BooksModel {
   @override
   int get hashCode {
     return image.hashCode ^
-        title.hashCode ^
-        subtitle.hashCode ^
-        summary.hashCode ^
-        story.hashCode ^
+        judulbuku.hashCode ^
+        pengarang.hashCode ^
+        deskripsi.hashCode ^
+        isibuku.hashCode ^
         genre.hashCode ^
-        id.hashCode ^
+        id_book.hashCode ^
         rating.hashCode;
   }
 
   static List<BooksModel> booksmodel = [
     BooksModel(
-        id: 1,
+        id_book: 1,
         image: 'assets/tctir.png',
-        title: 'The Classes That I Raised',
-        subtitle: 'Geunseo',
-        summary:
+        judulbuku: 'The Classes That I Raised',
+        pengarang: 'Geunseo',
+        deskripsi:
             "He was a F-rank Hunter, To top it off, he was an useless F-rank loser of a Hyung, who dragged down his incredible Dongsaeng,while he carelessly lived out his messed up life, he ultimately ended up taking his younger brother's life, he regressed back in time with his title, Perfect Upbringer",
-        story: "He was a F-rank Hunter, To top it off, he was an useless F-rank loser of a Hyung, who dragged down his incredible Dongsaeng,while he carelessly lived out his messed up life, he ultimately ended up taking his younger brother's life, he regressed back in time with his title, Perfect Upbringer",
+        isibuku: "He was a F-rank Hunter, To top it off, he was an useless F-rank loser of a Hyung, who dragged down his incredible Dongsaeng,while he carelessly lived out his messed up life, he ultimately ended up taking his younger brother's life, he regressed back in time with his title, Perfect Upbringer",
         rating: 4.1,
         genre: ['Action', 'Comedy', 'Fantasy']),
     BooksModel(
-        id: 2,
+        id_book: 2,
         image: 'assets/tocf.jpg',
-        title: "Trash Of The Count's Family",
-        subtitle: 'Yoo Ryeo Han',
-        summary: '',
-        story: '',
+        judulbuku: "Trash Of The Count's Family",
+        pengarang: 'Yoo Ryeo Han',
+        deskripsi: '',
+        isibuku: '',
         rating: 4.5,
         genre: ['Action', 'Drama', 'Shounen']),
     BooksModel(
-        id: 3,
+        id_book: 3,
         image: 'assets/sssclass.jpg',
-        title: 'SSS-Class Suicide Hunter',
-        subtitle: 'Shin Noah',
-        summary: '',
-        story: '',
+        judulbuku: 'SSS-Class Suicide Hunter',
+        pengarang: 'Shin Noah',
+        deskripsi: '',
+        isibuku: '',
         rating: 4.5,
         genre: ['Action', 'Advanture', 'Comedy']),
     BooksModel(
-        id: 4,
+        id_book: 4,
         image: 'assets/secondliferanker.png',
-        title: 'Second Life Ranker',
-        subtitle: 'Sadoyeon',
-        story: '',
-        summary: '',
+        judulbuku: 'Second Life Ranker',
+        pengarang: 'Sadoyeon',
+        isibuku: '',
+        deskripsi: '',
         rating: 4.1,
         genre: ['Action', 'Mystery', 'Tragedy']),
   ];

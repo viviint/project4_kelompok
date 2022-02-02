@@ -37,11 +37,11 @@ class BestSeller extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
-                    child: Text(infoo.title,
+                    child: Text(infoo.judulbuku,
                         style: TextStyle(fontSize: 15, color: Colors.black)),
                   ),
                   Text(
-                    infoo.subtitle,
+                    infoo.pengarang,
                     style: TextStyle(fontSize: 15, color: Colors.grey),
                   )
                 ],
@@ -50,7 +50,7 @@ class BestSeller extends StatelessWidget {
           ),
         ),
         onTap: () {
-          Get.to(Detail(idBook: infoo.id));
+          Get.to(Detail(idBook: infoo.id_book));
         },
       ),
     );

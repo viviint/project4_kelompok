@@ -7,24 +7,24 @@ part of 'booksmodel.dart';
 // **************************************************************************
 
 BooksModel _$BooksModelFromJson(Map<String, dynamic> json) => BooksModel(
-      id: json['id'] as int,
+      id_book: json['id_book'] as int,
       image: json['image'] as String,
-      title: json['title'] as String,
-      subtitle: json['subtitle'] as String,
-      rating: json['rating'] as double,
-      story: json['story'] as String,
-      genre: json['genre'] as List<String>,
-      summary: json['summary'] as String,
+      judulbuku: json['judulbuku'] as String,
+      pengarang: json['pengarang'] as String,
+      deskripsi: json['deskripsi'] as String,
+      isibuku: json['isibuku'] as String,
+      genre: (json['genre'] as List<dynamic>).map((e) => e as String).toList(),
+      rating: (json['rating'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$BooksModelToJson(BooksModel instance) =>
     <String, dynamic>{
-      'id': instance.id,
+      'id_book': instance.id_book,
       'image': instance.image,
-      'title': instance.title,
-      'subtitle': instance.subtitle,
-      'rating': instance.rating,
-      'story': instance.story,
+      'judulbuku': instance.judulbuku,
+      'pengarang': instance.pengarang,
+      'deskripsi': instance.deskripsi,
+      'isibuku': instance.isibuku,
       'genre': instance.genre,
-      'summary': instance.summary
+      'rating': instance.rating,
     };

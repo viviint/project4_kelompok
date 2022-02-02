@@ -24,7 +24,7 @@ class LatestSearch extends StatelessWidget {
                 image: DecorationImage(image: NetworkImage(infoo.image))),
           ),
           Text(
-            infoo.title,
+            infoo.judulbuku,
             maxLines: 2,
             style: TextStyle(
               fontSize: 15,
@@ -35,7 +35,7 @@ class LatestSearch extends StatelessWidget {
         ],
       ),
       onTap: () {
-        Get.to(Detail(idBook: infoo.id));
+        Get.to(Detail(idBook: infoo.id_book));
       },
     );
   }
