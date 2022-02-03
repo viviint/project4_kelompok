@@ -6,6 +6,7 @@ import 'package:latihan_4/detailpage.dart';
 import 'package:latihan_4/model/booksmodel.dart';
 
 class ReleaSe extends StatefulWidget {
+  final bookCon = Get.find<BooksController>();
   final catController = Get.put(BooksController());
   ReleaSe({Key? key}) : super(key: key);
 
@@ -39,9 +40,9 @@ class _ReleaSeState extends State<ReleaSe> {
                 crossAxisCount: 2,
                 mainAxisSpacing: 15,
                 crossAxisSpacing: 15,
-                itemCount: BooksModel.booksmodel.length,
+                itemCount: widget.bookCon.books.length,
                 itemBuilder: (context, index) {
-                  BooksModel booksModel = BooksModel.booksmodel[index];
+                  BooksModel booksModel = widget.bookCon.books[index];
                   return GestureDetector(
                       onTap: () => Get.to(Detail(idBook: hashCode)),
                       child: Container(
@@ -52,11 +53,11 @@ class _ReleaSeState extends State<ReleaSe> {
                               width: 160,
                               decoration: BoxDecoration(
                                   image: DecorationImage(
-                                      image: NetworkImage(booksModel.image))),
+                                      image: NetworkImage(booksModel.image!))),
                             ),
                             Center(
                               child: Text(
-                                booksModel.judulbuku,
+                                booksModel.judulbuku!,
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,

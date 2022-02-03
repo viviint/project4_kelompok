@@ -16,18 +16,19 @@ class SearcH extends StatefulWidget {
 }
 
 class _SearcHState extends State<SearcH> {
+  final bookCon = Get.put(BooksController());
   final _formKey = GlobalKey<FormState>();
   Widget latestSearch() {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       padding: EdgeInsets.symmetric(horizontal: 20),
-      child: Row(
-          children: BooksModel.booksmodel
-              .asMap()
-              .entries
-              .map((MapEntry map) =>
-                  LatestSearch(infoo: BooksModel.booksmodel[map.key]))
-              .toList()),
+      child: ListView.builder(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        itemCount: bookCon.books.length,
+        itemBuilder: (context, index) =>
+            LatestSearch(infoo: bookCon.books[index]),
+      ),
     );
   }
 

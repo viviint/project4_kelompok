@@ -1,18 +1,16 @@
-import 'package:http/http.dart' as http;
+import 'package:get/get.dart';
 import 'package:latihan_4/model/booksmodel.dart';
 
-class BooksService {
-  static var client = http.Client();
-
-  static Future<List<BooksModel>?> fetchBooks() async {
-    var response = await client
-        .get(Uri.parse('http://localhost:8032/maintainer/v1/data_buku'));
-    if (response.statusCode == 200) {
-      var jsonString = response.body;
-      return booksmodelFromJson(jsonString);
-    } else {
-      //show error message
-      return null;
-    }
+class BooksService extends GetConnect {
+  Future<List<BooksModel>> getBooksModel() async {
+    return await get("http://192.168.55.60:8032/maintainer/v1/data_buku")
+        .then((value) {
+      if (value.isOk && value.body != null) {
+        return List<BooksModel>.from(
+            value.body.map((e) => BooksModel.fromJson(e)));
+      } else {
+        throw value.statusText!;
+      }
+    });
   }
 }

@@ -30,14 +30,14 @@ class _ReaDState extends State<ReaD> {
               color: Colors.black,
             ),
             onTap: () {
-              Get.to(Detail(idBook: widget.detail.id_book));
+              Get.to(Detail(idBook: widget.detail.id_book!));
             }),
       ),
       body: Padding(
         padding: const EdgeInsets.all(25),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: [Text(widget.detail.isibuku)],
+          children: [Text(widget.detail.isibuku!)],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(

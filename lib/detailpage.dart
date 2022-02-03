@@ -9,14 +9,14 @@ import 'package:latihan_4/readpage.dart';
 import 'package:latihan_4/widget/genreselect.dart';
 
 class Detail extends StatelessWidget {
+  final bookCon = Get.find<BooksController>();
   int idBook;
 
   Detail({Key? key, required this.idBook}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var selectedData =
-        BooksModel.booksmodel.firstWhere((e) => e.id_book == idBook);
+    var selectedData = bookCon.books.firstWhere((e) => e.id_book == idBook);
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 90,
@@ -66,7 +66,7 @@ class Detail extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 25),
             child: RatingBar.builder(
-              initialRating: selectedData.rating,
+              initialRating: selectedData.rating!,
               minRating: 1,
               direction: Axis.horizontal,
               allowHalfRating: true,
@@ -151,7 +151,7 @@ class Detail extends StatelessWidget {
             padding: const EdgeInsets.only(left: 25, right: 25),
             child: Column(
               children: [
-                Text(selectedData.deskripsi),
+                Text(selectedData.deskripsi!),
               ],
             ),
           ),

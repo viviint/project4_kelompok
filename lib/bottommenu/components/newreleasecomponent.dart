@@ -21,16 +21,16 @@ class NewRelease extends StatelessWidget {
             width: 150,
             margin: EdgeInsets.all(40),
             decoration: BoxDecoration(
-                image: DecorationImage(image: NetworkImage(infoo.image))),
+                image: DecorationImage(image: NetworkImage(infoo.image!))),
           ),
           Text(
-            infoo.judulbuku,
+            infoo.judulbuku!,
             style: TextStyle(fontSize: 15, color: Colors.black),
           )
         ],
       ),
       onTap: () {
-        Get.to(Detail(idBook: infoo.id_book));
+        Get.to(Detail(idBook: infoo.id_book!));
       },
     );
   }

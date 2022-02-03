@@ -27,7 +27,7 @@ class BestSeller extends StatelessWidget {
           child: Row(
             children: [
               Image.asset(
-                infoo.image,
+                infoo.image!,
                 width: 90,
               ),
               const SizedBox(
@@ -37,11 +37,11 @@ class BestSeller extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
-                    child: Text(infoo.judulbuku,
+                    child: Text(infoo.judulbuku!,
                         style: TextStyle(fontSize: 15, color: Colors.black)),
                   ),
                   Text(
-                    infoo.pengarang,
+                    infoo.pengarang!,
                     style: TextStyle(fontSize: 15, color: Colors.grey),
                   )
                 ],
@@ -50,7 +50,7 @@ class BestSeller extends StatelessWidget {
           ),
         ),
         onTap: () {
-          Get.to(Detail(idBook: infoo.id_book));
+          Get.to(Detail(idBook: infoo.id_book!));
         },
       ),
     );

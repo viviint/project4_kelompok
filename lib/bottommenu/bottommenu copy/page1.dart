@@ -21,19 +21,20 @@ class One extends StatefulWidget {
 }
 
 class _OneState extends State<One> {
+  final bookCon = Get.put(BooksController());
   int selectedValue = 0;
 
   Widget bestSeller() {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       padding: EdgeInsets.symmetric(horizontal: 20),
-      child: Row(
-          children: BooksModel.booksmodel
-              .asMap()
-              .entries
-              .map((MapEntry map) =>
-                  BestSeller(infoo: BooksModel.booksmodel[map.key]))
-              .toList()),
+      child: ListView.builder(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        itemCount: bookCon.books.length,
+        itemBuilder: (context, index) =>
+            BestSeller(infoo: bookCon.books[index]),
+      ),
     );
   }
 
@@ -41,13 +42,13 @@ class _OneState extends State<One> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       padding: EdgeInsets.symmetric(horizontal: 20),
-      child: Row(
-          children: BooksModel.booksmodel
-              .asMap()
-              .entries
-              .map((MapEntry map) =>
-                  NewRelease(infoo: BooksModel.booksmodel[map.key]))
-              .toList()),
+      child: ListView.builder(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        itemCount: bookCon.books.length,
+        itemBuilder: (context, index) =>
+            NewRelease(infoo: bookCon.books[index]),
+      ),
     );
   }
 
@@ -55,13 +56,13 @@ class _OneState extends State<One> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       padding: EdgeInsets.symmetric(horizontal: 20),
-      child: Row(
-          children: BooksModel.booksmodel
-              .asMap()
-              .entries
-              .map((MapEntry map) =>
-                  TrendingNow(infoo: BooksModel.booksmodel[map.key]))
-              .toList()),
+      child: ListView.builder(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        itemCount: bookCon.books.length,
+        itemBuilder: (context, index) =>
+            TrendingNow(infoo: bookCon.books[index]),
+      ),
     );
   }
 
@@ -141,21 +142,20 @@ class _OneState extends State<One> {
                           SizedBox(
                             height: 300,
                             child: ListView.builder(
-                                itemCount: BooksModel.booksmodel.length,
+                                itemCount: bookCon.books.length,
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
-                                  BooksModel booksModel =
-                                      BooksModel.booksmodel[index];
+                                  BooksModel booksModel = bookCon.books[index];
                                   return GestureDetector(
                                     onTap: () => Get.to(
-                                        Detail(idBook: booksModel.id_book)),
+                                        Detail(idBook: booksModel.id_book!)),
                                     child: Container(
                                       height: 100,
                                       width: 195,
                                       decoration: BoxDecoration(
                                           image: DecorationImage(
                                               image: NetworkImage(
-                                                  booksModel.image))),
+                                                  booksModel.image!))),
                                       margin: EdgeInsets.all(10),
                                     ),
                                   );
