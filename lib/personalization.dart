@@ -117,9 +117,7 @@ class _PersonaLState extends State<PersonaL> {
                 textColor: Colors.indigo,
                 child: const Text("Skip", style: TextStyle(fontSize: 15)),
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    Get.to(Ready());
-                  }
+                  Get.to(Ready());
                 },
               ),
             ),

@@ -1,11 +1,14 @@
 import 'dart:ui';
-
+import 'package:latihan_4/controller/usercontroller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:latihan_4/settingspage.dart';
 
 class Profileview extends StatefulWidget {
-  const Profileview({Key? key}) : super(key: key);
+  // int user_code;
+  // final userCon = Get.find<UserController>();
+  // var selectedData = userCon.users.firstWhere((e) => e.user_code == user_code);
+  Profileview({Key? key}) : super(key: key);
 
   @override
   _ProfileviewState createState() => _ProfileviewState();

@@ -4,12 +4,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'usermodel.g.dart';
 
-List<UserModel> usermodelFromJson(String str) =>
-    List<UserModel>.from(json.decode(str).map((x) => UserModel.fromJson(x)));
-
-String usermodelToJson(List<UserModel> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
 @JsonSerializable()
 class UserModel {
   int user_code;
@@ -49,34 +43,10 @@ class UserModel {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return {
-      'user_code': user_code,
-      'email': email,
-      'displayname': displayname,
-      'ussername': ussername,
-      'phonenumb': phonenumb,
-      'birthdate': birthdate,
-      'image': image,
-    };
-  }
+  Map<String, dynamic> toJson() => _$UserModelToJson(this);
 
-  factory UserModel.fromMap(Map<String, dynamic> map) {
-    return UserModel(
-      user_code: map['user_code']?.toInt() ?? 0,
-      email: map['email'] ?? '',
-      displayname: map['displayname'] ?? '',
-      ussername: map['ussername'] ?? '',
-      phonenumb: map['phonenumb']?.toInt() ?? 0,
-      birthdate: map['birthdate']?.toInt() ?? 0,
-      image: map['image'] ?? '',
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory UserModel.fromJson(String source) =>
-      UserModel.fromMap(json.decode(source));
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
 
   @override
   String toString() {

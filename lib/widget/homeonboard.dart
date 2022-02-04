@@ -71,7 +71,7 @@ class HomeON extends StatelessWidget {
                     textColor: Colors.indigo,
                     child: Text("skip", style: TextStyle(fontSize: 20)),
                     onPressed: () {
-                      Get.offAll(ErroR());
+                      Get.offAll(() => ErroR());
                     },
                   ),
                 ),

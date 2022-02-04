@@ -19,10 +19,6 @@ class _SplashState extends State<Splash> {
     });
   }
 
-  void navigationPage() {
-    Navigator.of(context).pushReplacementNamed('/home');
-  }
-
   @override
   void initState() {
     next();

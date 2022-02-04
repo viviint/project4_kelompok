@@ -24,7 +24,7 @@ class _BottommenuState extends State<Bottommenu> {
         shadowColor: Colors.transparent,
         toolbarHeight: 90,
         backgroundColor: Colors.white,
-        title: const Text(
+        title: Text(
           "    AudioBooks.",
           style: TextStyle(
               color: Colors.indigo, fontWeight: FontWeight.w700, fontSize: 25),
@@ -50,8 +50,7 @@ class _BottommenuState extends State<Bottommenu> {
               ),
             ),
             onTap: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (BuildContext context) => Setting()));
+              Get.to(Setting());
             },
           ),
         ],
@@ -60,7 +59,7 @@ class _BottommenuState extends State<Bottommenu> {
       bottomNavigationBar: BottomNavigationBar(
         onTap: ontap,
         currentIndex: currentIndex,
-        items: const [
+        items: [
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'Home',

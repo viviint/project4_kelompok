@@ -22,13 +22,13 @@ class _SearcHState extends State<SearcH> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       padding: EdgeInsets.symmetric(horizontal: 20),
-      child: ListView.builder(
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        itemCount: bookCon.books.length,
-        itemBuilder: (context, index) =>
-            LatestSearch(infoo: bookCon.books[index]),
-      ),
+      child: Row(
+          children: bookCon.books
+              .asMap()
+              .entries
+              .map(
+                  (MapEntry map) => LatestSearch(infoo: bookCon.books[map.key]))
+              .toList()),
     );
   }
 

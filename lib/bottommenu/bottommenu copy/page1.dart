@@ -28,13 +28,12 @@ class _OneState extends State<One> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       padding: EdgeInsets.symmetric(horizontal: 20),
-      child: ListView.builder(
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        itemCount: bookCon.books.length,
-        itemBuilder: (context, index) =>
-            BestSeller(infoo: bookCon.books[index]),
-      ),
+      child: Row(
+          children: bookCon.books
+              .asMap()
+              .entries
+              .map((MapEntry map) => BestSeller(infoo: bookCon.books[map.key]))
+              .toList()),
     );
   }
 
@@ -42,13 +41,12 @@ class _OneState extends State<One> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       padding: EdgeInsets.symmetric(horizontal: 20),
-      child: ListView.builder(
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        itemCount: bookCon.books.length,
-        itemBuilder: (context, index) =>
-            NewRelease(infoo: bookCon.books[index]),
-      ),
+      child: Row(
+          children: bookCon.books
+              .asMap()
+              .entries
+              .map((MapEntry map) => NewRelease(infoo: bookCon.books[map.key]))
+              .toList()),
     );
   }
 
@@ -56,196 +54,189 @@ class _OneState extends State<One> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       padding: EdgeInsets.symmetric(horizontal: 20),
-      child: ListView.builder(
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        itemCount: bookCon.books.length,
-        itemBuilder: (context, index) =>
-            TrendingNow(infoo: bookCon.books[index]),
-      ),
+      child: Row(
+          children: bookCon.books
+              .asMap()
+              .entries
+              .map((MapEntry map) => TrendingNow(infoo: bookCon.books[map.key]))
+              .toList()),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
         body: ListView(
-          shrinkWrap: true,
+      shrinkWrap: true,
+      children: [
+        Column(
           children: [
-            Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Padding(
-                      padding: EdgeInsets.only(left: 25, top: 20, bottom: 10),
-                      child: Text(
-                        "Categories",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w800),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(right: 25, top: 20, bottom: 10),
-                      child: Text(
-                        'See more',
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.indigo,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 50,
-                  child: GetBuilder<CategoryController>(builder: (cat) {
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: cat.category.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) => CategorySelect(
-                          title: cat.category[index].categoryName!),
-                    );
-                  }),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Padding(
-                      padding: EdgeInsets.only(left: 25, top: 10, bottom: 10),
-                      child: Text(
-                        "Recomended For You",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(right: 25, top: 10, bottom: 10),
-                      child: Text(
-                        'See more',
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.indigo,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ],
-                ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
                 Padding(
-                  padding: const EdgeInsets.only(left: 18, top: 5, bottom: 10),
-                  child: Container(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: 300,
-                            child: ListView.builder(
-                                itemCount: bookCon.books.length,
-                                scrollDirection: Axis.horizontal,
-                                itemBuilder: (context, index) {
-                                  BooksModel booksModel = bookCon.books[index];
-                                  return GestureDetector(
-                                    onTap: () => Get.to(
-                                        Detail(idBook: booksModel.id_book!)),
-                                    child: Container(
-                                      height: 100,
-                                      width: 195,
-                                      decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              image: NetworkImage(
-                                                  booksModel.image!))),
-                                      margin: EdgeInsets.all(10),
-                                    ),
-                                  );
-                                }),
-                          )
-                        ],
-                      ),
-                    ),
+                  padding: EdgeInsets.only(left: 25, top: 20, bottom: 10),
+                  child: Text(
+                    "Categories",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Padding(
-                      padding: EdgeInsets.only(left: 25, top: 10, bottom: 10),
-                      child: Text(
-                        "Best Seller",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(right: 25, top: 10, bottom: 10),
-                      child: Text(
-                        'See more',
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.indigo,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ],
+                Padding(
+                  padding: EdgeInsets.only(right: 25, top: 20, bottom: 10),
+                  child: Text(
+                    'See more',
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.indigo,
+                        fontWeight: FontWeight.w600),
+                  ),
                 ),
-                bestSeller(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 25, top: 10, bottom: 10),
-                      child: Text(
-                        "New Release",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(right: 25, top: 10, bottom: 10),
-                      child: GestureDetector(
-                        child: Text(
-                          'See more',
-                          style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.indigo,
-                              fontWeight: FontWeight.w600),
-                        ),
-                        onTap: () {
-                          Get.to(ReleaSe());
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                newRelease(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Padding(
-                      padding: EdgeInsets.only(left: 25, top: 10, bottom: 10),
-                      child: Text(
-                        "Trending Now",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(right: 25, top: 10, bottom: 10),
-                      child: Text(
-                        'See more',
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.indigo,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ],
-                ),
-                trendingNow()
               ],
             ),
+            SizedBox(
+              height: 50,
+              child: GetBuilder<CategoryController>(builder: (cat) {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: cat.category.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) =>
+                      CategorySelect(title: cat.category[index].categoryName!),
+                );
+              }),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Padding(
+                  padding: EdgeInsets.only(left: 25, top: 10, bottom: 10),
+                  child: Text(
+                    "Recomended For You",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(right: 25, top: 10, bottom: 10),
+                  child: Text(
+                    'See more',
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.indigo,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 18, top: 5, bottom: 10),
+              child: Container(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 300,
+                        child: ListView.builder(
+                            itemCount: bookCon.books.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              BooksModel booksModel = bookCon.books[index];
+                              return GestureDetector(
+                                onTap: () =>
+                                    Get.to(Detail(idBook: booksModel.id_book!)),
+                                child: Container(
+                                  height: 100,
+                                  width: 195,
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image:
+                                              NetworkImage(booksModel.image!))),
+                                  margin: EdgeInsets.all(10),
+                                ),
+                              );
+                            }),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Padding(
+                  padding: EdgeInsets.only(left: 25, top: 10, bottom: 10),
+                  child: Text(
+                    "Best Seller",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(right: 25, top: 10, bottom: 10),
+                  child: Text(
+                    'See more',
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.indigo,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
+              ],
+            ),
+            bestSeller(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 25, top: 10, bottom: 10),
+                  child: Text(
+                    "New Release",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(right: 25, top: 10, bottom: 10),
+                  child: GestureDetector(
+                    child: Text(
+                      'See more',
+                      style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.indigo,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    onTap: () {
+                      Get.to(ReleaSe());
+                    },
+                  ),
+                ),
+              ],
+            ),
+            newRelease(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Padding(
+                  padding: EdgeInsets.only(left: 25, top: 10, bottom: 10),
+                  child: Text(
+                    "Trending Now",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(right: 25, top: 10, bottom: 10),
+                  child: Text(
+                    'See more',
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.indigo,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
+              ],
+            ),
+            trendingNow()
           ],
-        ));
+        ),
+      ],
+    ));
   }
 }
