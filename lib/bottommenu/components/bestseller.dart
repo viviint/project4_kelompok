@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:latihan_4/controller/bookscontroller.dart';
@@ -14,6 +16,7 @@ class BestSeller extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(infoo.image!);
     return Padding(
       padding: const EdgeInsets.all(15),
       child: GestureDetector(

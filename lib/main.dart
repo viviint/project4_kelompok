@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Splash(),
+      home: Bottommenu(),
       // routes: {Detail.nameRoute :(context) => Detail()},
     );
   }
