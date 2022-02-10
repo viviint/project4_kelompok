@@ -1,10 +1,13 @@
 import 'dart:convert';
+
 import 'package:json_annotation/json_annotation.dart';
+
+part 'ratingmodel.g.dart';
 
 @JsonSerializable()
 class RatingModel {
   int? id;
-  double? rating;
+  String? rating;
 
   RatingModel({
     this.id,
@@ -13,7 +16,7 @@ class RatingModel {
 
   RatingModel copyWith({
     int? id,
-    double? rating,
+    String? rating,
   }) {
     return RatingModel(
       id: id ?? this.id,
@@ -21,24 +24,10 @@ class RatingModel {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'rating': rating,
-    };
-  }
+  Map<String, dynamic> toJson() => _$RatingModelToJson(this);
 
-  factory RatingModel.fromMap(Map<String, dynamic> map) {
-    return RatingModel(
-      id: map['id']?.toInt(),
-      rating: map['rating']?.toDouble(),
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory RatingModel.fromJson(String source) =>
-      RatingModel.fromMap(json.decode(source));
+  factory RatingModel.fromJson(Map<String, dynamic> json) =>
+      _$RatingModelFromJson(json);
 
   @override
   String toString() => 'RatingModel(id: $id, rating: $rating)';

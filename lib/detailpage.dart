@@ -3,16 +3,19 @@ import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:latihan_4/bottommenu/bottommenu%20copy/bottommenu.dart';
 import 'package:latihan_4/controller/bookscontroller.dart';
+import 'package:latihan_4/controller/ratingcontroller.dart';
 import 'package:latihan_4/model/booksmodel.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:latihan_4/model/ratingmodel.dart';
 import 'package:latihan_4/readpage.dart';
 import 'package:latihan_4/widget/genreselect.dart';
 
 class Detail extends StatelessWidget {
   final bookCon = Get.find<BooksController>();
+  final RatingModel ratingModel;
   int idBook;
 
-  Detail({Key? key, required this.idBook}) : super(key: key);
+  Detail({Key? key, required this.idBook, this.ratingModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,24 +65,24 @@ class Detail extends StatelessWidget {
               ),
             ]),
           ),
-          // Padding(
-          //   padding: const EdgeInsets.only(left: 25, right: 25),
-          //   child: RatingBar.builder(
-          //     initialRating: selectedData.rating!,
-          //     minRating: 1,
-          //     direction: Axis.horizontal,
-          //     allowHalfRating: true,
-          //     itemCount: 5,
-          //     itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-          //     itemBuilder: (context, _) => Icon(
-          //       Icons.star,
-          //       color: Colors.amber,
-          //     ),
-          //     onRatingUpdate: (rating) {
-          //       print(rating);
-          //     },
-          //   ),
-          // ),
+          Padding(
+            padding: const EdgeInsets.only(left: 25, right: 25),
+            child: RatingBar.builder(
+              initialRating: ,
+              minRating: 1,
+              direction: Axis.horizontal,
+              allowHalfRating: true,
+              itemCount: 5,
+              itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+              itemBuilder: (context, _) => Icon(
+                Icons.star,
+                color: Colors.amber,
+              ),
+              onRatingUpdate: (rating) {
+                print(rating);
+              },
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.only(top: 15, bottom: 15, left: 25),
             child: Row(
